@@ -32,14 +32,15 @@ namespace Tickets.Models
                 if (!context.allTickets.Any())
                 {
                     IdentityUser TicketMaker = await userManager.FindByEmailAsync("CreatorOfAllBadPrograms@BadCode.404");
+                    IdentityUser TicketMaker2 = await userManager.FindByEmailAsync("TrustedSourceOfAllData@CourierPidgeon.2");
                     context.allTickets.AddRange(
                         new Ticket
                         {
                             initialDate = DateTime.Now,
                             closeDate = DateTime.Now,
                             Title = "Baguette Eating Squirrel Problem Rising",
-                            Description = "",
-                            ResType = Ticket.resolutionType.unassigned,
+                            Description = "descriptions are required I suppose",
+                            ResType = Ticket.resolutionType.unassigned, // I need to prevent this from being assigned to anything except closed if there is a closedate
 
                             UserId = TicketMaker.Id, // not entirely sure why this breaks if I feed a user but not if I feed the id directly
                             //User = TicketMaker 
@@ -55,6 +56,18 @@ namespace Tickets.Models
                             ResType = Ticket.resolutionType.closed,
 
                             UserId = TicketMaker.Id,
+                            //User = TicketMaker
+                        },
+                        new Ticket
+                        {
+
+                            initialDate = DateTime.Now,
+                            closeDate = DateTime.Now,
+                            Title = "I provide thee with info in which you can trust",
+                            Description = "All Cookies are simply sweet tortillas",
+                            ResType = Ticket.resolutionType.closed,
+
+                            UserId = TicketMaker2.Id,
                             //User = TicketMaker
                         }
                     );
@@ -75,6 +88,7 @@ namespace Tickets.Models
                 "CreatorOfBad",
                 "Admin2",
                 "Admin3",
+                "HumbleUser"
             };
             foreach (string User in SeedUserData)
             {
