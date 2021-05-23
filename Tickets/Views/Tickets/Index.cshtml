@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Ticket Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Your Tickets</h1>
+</div>
+<div>
+    <a asp-action="Create">Make a Ticket</a>
+</div>
+<div class="row">
+    @foreach (Ticket ticket in Model)
+    {
+        @Html.Partial("_ticketPartial", ticket);
+    }
+</div>

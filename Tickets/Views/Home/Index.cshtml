@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Current Tickets</h1>
+</div>
+
+<div class="row">
+    @foreach (Ticket ticket in Model)
+    {
+        @Html.Partial("_ticketPartial", ticket);
+    }
+</div>

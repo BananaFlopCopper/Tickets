@@ -1,0 +1,36 @@
+﻿@model Tickets.Models.Ticket
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-title">From: @Model.User.Email</p>
+
+            <p class="card-text"> @Model.Description</p>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <p>Created On: @Model.initialDate</p>
+                    </div>
+                    <div class="col">
+                        <p>Closed On: @Model.closeDate</p>
+                    </div>
+                    <div class="col">
+                        <p>State: @Model.ResType</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a>
+</div>
